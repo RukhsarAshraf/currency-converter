@@ -3,6 +3,14 @@ import requests
 import os
 from dotenv import load_dotenv
 
+print(os.environ)
+
+# Get API Key
+API_KEY = os.getenv("API_KEY")
+
+# Debugging: Print API_KEY
+print(f"API_KEY: {API_KEY}")
+
 # Load .env file
 load_dotenv()
 
@@ -27,8 +35,7 @@ if st.button("Convert"):
     else:
         try:
             # Construct API URL using API_KEY
-            url = f"https://v6.exchangerate-api.com/v6/{API_KEY}/pair/{from_currency}/{to_currency}/{amount}"
-
+            url = f"https://v6.exchangerate-api.com/v6/{API_KEY}/pair/{from_currency}/{to_currency}?amount={amount}"
             # Fetch Data from API
             response = requests.get(url)
 
